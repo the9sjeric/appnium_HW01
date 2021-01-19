@@ -27,3 +27,14 @@ class TestWeWork():
         self.driver.find_element_by_xpath('//*[contains(@resource-id,"elq") and @text="男"]').click()
         self.driver.find_element_by_xpath('//*[@text="手机号"]').send_keys("1234567890123")
         self.driver.find_element_by_xpath('//*[@text="保存"]').click()
+        sleep(5)
+
+    def test_menber_in_list(self):
+        self.driver.find_element_by_xpath('//*[@text="通讯录"]').click()
+        # self.driver.find_element_by_xpath('//*[contains(@resource-id,"idp")]').click()
+        menber = self.driver.find_elements_by_xpath('//*[contains(@resource-id,"ilb")]/android.widget.TextView')
+        menbers = []
+        for i in menber:
+            menbers.append(i.text)
+        assert "laowang" in menbers
+
